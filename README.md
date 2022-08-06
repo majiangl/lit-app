@@ -1,2 +1,2 @@
-# lit-template
-A template project for lit
+# lit-starter
+A starter project for lit
