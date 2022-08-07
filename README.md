@@ -1,2 +1,2 @@
-# lit-starter
-A starter project for lit
+# lit-app
+A template project for developing applications using Lit.
