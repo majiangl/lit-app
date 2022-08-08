@@ -1,0 +1,41 @@
+{
+  "name": "lit-app",
+  "version": "0.1.0",
+  "description": "A template project for developing applications using Lit",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "tsc && concurrently -k -r 'tsc --watch --preserveWatchOutput' 'wds'",
+    "test": "echo 'Error: no test specified' && exit 1"
+  },
+  "keywords": [
+    "web-components",
+    "typescript",
+    "lit"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://majiangl@github.com/majiangl/lit-app.git"
+  },
+  "author": "majiangl",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/majiangl/lit-app/issues"
+  },
+  "homepage": "https://github.com/majiangl/lit-app#readme",
+  "dependencies": {
+    "lit": "^2.2.8"
+  },
+  "devDependencies": {
+    "@open-wc/dev-server-hmr": "^0.1.3",
+    "@rollup/plugin-node-resolve": "^13.3.0",
+    "@web/dev-server": "^0.1.33",
+    "@web/rollup-plugin-html": "^1.10.3",
+    "@web/rollup-plugin-import-meta-assets": "^1.0.7",
+    "concurrently": "^7.3.0",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.77.2",
+    "ts-lit-plugin": "^1.2.1",
+    "typescript": "^4.7.4"
+  }
+}
