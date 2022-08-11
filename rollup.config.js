@@ -1,17 +1,17 @@
-import nodeResolve from '@rollup/plugin-node-resolve';
-import html from '@web/rollup-plugin-html';
-import { importMetaAssets } from '@web/rollup-plugin-import-meta-assets';
-import { terser } from 'rollup-plugin-terser';
-import minifyHTMLLiterals from 'rollup-plugin-minify-html-literals';
-import summary from 'rollup-plugin-summary';
+import nodeResolve from "@rollup/plugin-node-resolve";
+import html from "@web/rollup-plugin-html";
+import { importMetaAssets } from "@web/rollup-plugin-import-meta-assets";
+import { terser } from "rollup-plugin-terser";
+import minifyHTMLLiterals from "rollup-plugin-minify-html-literals";
+import summary from "rollup-plugin-summary";
 
 export default {
-  input: 'index.html',
+  input: "index.html",
   output: {
-    entryFileNames: '[hash].js',
-    assetFileNames: '[hash][extname]',
-    format: 'es',
-    dir: 'dist',
+    entryFileNames: "[hash].js",
+    assetFileNames: "[hash][extname]",
+    format: "es",
+    dir: "dist",
   },
 
   /**

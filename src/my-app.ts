@@ -1,12 +1,12 @@
-import { LitElement, html, css } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { LitElement, html, css } from "lit";
+import { customElement, property } from "lit/decorators.js";
 
-const logo = new URL('../../assets/open-wc-logo.svg', import.meta.url).href;
+const logo = new URL("../../assets/open-wc-logo.svg", import.meta.url).href;
 
-@customElement('my-app')
+@customElement("my-app")
 export class MyApp extends LitElement {
-  @property({type: String})
-  override title = 'My app';
+  @property({ type: String })
+  override title = "My app";
 
   static override styles = css`
     :host {
@@ -54,7 +54,7 @@ export class MyApp extends LitElement {
   override render() {
     return html`
       <main>
-        <div class="logo"><img alt="open-wc logo" src=${logo}/></div>
+        <div class="logo"><img alt="open-wc logo" src="${logo}/" /></div>
         <h1>${this.title}</h1>
 
         <p>Edit <code>src/my-app.ts</code> and save to live update.</p>

@@ -5,15 +5,15 @@ module.exports = {
     es2019: true,
     node: true,
   },
-  extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended', 'plugin:lit/recommended'],
-  parser: '@typescript-eslint/parser',
+  extends: ["eslint:recommended", "plugin:@typescript-eslint/recommended", "plugin:lit/recommended"],
+  parser: "@typescript-eslint/parser",
   parserOptions: {
     /** Specify the version of ECMAScript syntax you want to use */
     ecmaVersion: 2019,
-    sourceType: 'module',
+    sourceType: "module",
   },
-  plugins: ['@typescript-eslint'],
+  plugins: ["@typescript-eslint"],
   /** ESLint ignores node_modules by default */
-  ignorePatterns: ['out/', 'dist/'],
+  ignorePatterns: ["out/", "dist/"],
   rules: {},
 };

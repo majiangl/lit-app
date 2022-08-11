@@ -1,4 +1,4 @@
-import { hmrPlugin, presets } from '@open-wc/dev-server-hmr';
+import { hmrPlugin, presets } from "@open-wc/dev-server-hmr";
 
 export default /** @type {import('@web/dev-server').DevServerConfig} */ ({
   /**
@@ -18,7 +18,7 @@ export default /** @type {import('@web/dev-server').DevServerConfig} */ ({
     /**
      * See conditional exports: https://nodejs.org/api/packages.html#conditional-exports
      */
-    exportConditions: ['browser', 'development'],
+    exportConditions: ["browser", "development"],
   },
 
   /**
@@ -34,7 +34,7 @@ export default /** @type {import('@web/dev-server').DevServerConfig} */ ({
       /**
        * Include JS files in out folder emitted by tsc, since it's designed to work with JS files.
        */
-      include: ['out/**/*.js'],
+      include: ["out/**/*.js"],
       /**
        * Presets help by configuring the detection of base classes, decorators, and/or runtime code patches.
        */
