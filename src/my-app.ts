@@ -70,7 +70,12 @@ export class MyApp extends LitElement {
 
       <p class="app-footer">
         🚽 Made with love by
-        <a target="_blank" rel="noopener noreferrer" href="https://github.com/open-wc">open-wc</a>.
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://github.com/open-wc"
+          >open-wc</a
+        >.
       </p>
     `;
   }
