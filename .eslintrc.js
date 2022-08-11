@@ -5,7 +5,11 @@ module.exports = {
     es2019: true,
     node: true,
   },
-  extends: ["eslint:recommended", "plugin:@typescript-eslint/recommended", "plugin:lit/recommended"],
+  extends: [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:lit/recommended",
+  ],
   parser: "@typescript-eslint/parser",
   parserOptions: {
     /** Specify the version of ECMAScript syntax you want to use */
