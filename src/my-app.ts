@@ -1,11 +1,10 @@
-import {LitElement, html, css} from 'lit';
-import {customElement, property} from 'lit/decorators.js';
+import { LitElement, html, css } from 'lit';
+import { customElement, property } from 'lit/decorators.js';
 
 const logo = new URL('../../assets/open-wc-logo.svg', import.meta.url).href;
 
 @customElement('my-app')
 export class MyApp extends LitElement {
-
   @property({type: String})
   override title = 'My app';
 
@@ -71,13 +70,8 @@ export class MyApp extends LitElement {
 
       <p class="app-footer">
         🚽 Made with love by
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://github.com/open-wc"
-        >open-wc</a>.
+        <a target="_blank" rel="noopener noreferrer" href="https://github.com/open-wc">open-wc</a>.
       </p>
     `;
   }
 }
-

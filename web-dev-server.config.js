@@ -1,4 +1,4 @@
-import {hmrPlugin, presets} from '@open-wc/dev-server-hmr';
+import { hmrPlugin, presets } from '@open-wc/dev-server-hmr';
 
 export default /** @type {import('@web/dev-server').DevServerConfig} */ ({
   /**
@@ -38,7 +38,7 @@ export default /** @type {import('@web/dev-server').DevServerConfig} */ ({
       /**
        * Presets help by configuring the detection of base classes, decorators, and/or runtime code patches.
        */
-      presets: [presets.lit]
-    })
-  ]
+      presets: [presets.lit],
+    }),
+  ],
 });
