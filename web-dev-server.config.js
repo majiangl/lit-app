@@ -15,6 +15,9 @@ export default /** @type {import('@web/dev-server').DevServerConfig} */ ({
    * Resolve bare module imports
    */
   nodeResolve: {
+    /**
+     * See conditional exports: https://nodejs.org/api/packages.html#conditional-exports
+     */
     exportConditions: ['browser', 'development'],
   },
 
@@ -28,9 +31,13 @@ export default /** @type {import('@web/dev-server').DevServerConfig} */ ({
      * Use Hot Module Replacement. Requires @open-wc/dev-server-hmr plugin
      */
     hmrPlugin({
-      // Include JS files in out folder emitted by tsc, since it's designed to work with JS files.
+      /**
+       * Include JS files in out folder emitted by tsc, since it's designed to work with JS files.
+       */
       include: ['out/**/*.js'],
-      // Presets help by configuring the detection of base classes, decorators, and/or runtime code patches.
+      /**
+       * Presets help by configuring the detection of base classes, decorators, and/or runtime code patches.
+       */
       presets: [presets.lit]
     })
   ]
