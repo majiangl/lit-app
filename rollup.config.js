@@ -22,24 +22,24 @@ export default {
   preserveEntrySignatures: false,
 
   plugins: [
-    /** Enable using HTML as rollup entrypoint */
+    /* Enable using HTML as rollup entrypoint */
     html({
       minify: true,
       strictCSPInlineScripts: true,
     }),
-    /** Resolve bare module imports */
+    /* Resolve bare module imports */
     nodeResolve(),
-    /** Minify HTML template literals */
+    /* Minify HTML template literals */
     minifyHTMLLiterals(),
-    /** Minify JS */
+    /* Minify JS */
     terser({
       ecma: 2019,
-      /** Use when minifying an ES6 module */
+      // Use when minifying an ES6 module
       module: true,
     }),
-    /** Bundle assets references via import.meta.url */
+    // Bundle assets references via import.meta.url
     importMetaAssets(),
-    /** Print bundle summary */
+    // Print bundle summary
     summary(),
   ],
 };

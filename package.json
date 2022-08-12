@@ -6,6 +6,8 @@
   "type": "module",
   "scripts": {
     "build": "rimraf dist && tsc && rollup -c rollup.config.js",
+    "git:precommit": "lint-staged",
+    "prepare": "husky install",
     "start": "tsc && concurrently -k -r 'tsc --watch --preserveWatchOutput' 'wds'",
     "test": "echo 'Error: no test specified' && exit 1"
   },
@@ -38,6 +40,8 @@
     "concurrently": "^7.3.0",
     "eslint": "^8.21.0",
     "eslint-plugin-lit": "^1.6.1",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
     "prettier": "^2.7.1",
     "rimraf": "^3.0.2",
     "rollup": "^2.77.2",
