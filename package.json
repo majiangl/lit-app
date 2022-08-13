@@ -5,16 +5,18 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "build": "rimraf dist && tsc && rollup -c rollup.config.js",
+    "build": "rimraf dist && npm run compile && rollup -c rollup.config.js",
+    "compile": "tsc && symlink-dir ./assets ./out/assets",
     "git:precommit": "lint-staged",
     "prepare": "husky install",
-    "start": "tsc && concurrently -k -r 'tsc --watch --preserveWatchOutput' 'wds'",
+    "start": "npm run compile && concurrently -k -r 'tsc --watch --preserveWatchOutput' 'wds'",
     "test": "echo 'Error: no test specified' && exit 1"
   },
   "keywords": [
     "web-components",
     "typescript",
-    "lit"
+    "lit",
+    "lit application"
   ],
   "repository": {
     "type": "git",
@@ -48,6 +50,7 @@
     "rollup-plugin-minify-html-literals": "^1.2.6",
     "rollup-plugin-summary": "^1.4.3",
     "rollup-plugin-terser": "^7.0.2",
+    "symlink-dir": "^5.0.1",
     "typescript": "^4.7.4"
   }
 }

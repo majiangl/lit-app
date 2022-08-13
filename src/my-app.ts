@@ -1,7 +1,7 @@
 import { LitElement, html, css } from "lit";
 import { customElement, property } from "lit/decorators.js";
 
-const logo = new URL("../../assets/open-wc-logo.svg", import.meta.url).href;
+const logo = new URL("../assets/open-wc-logo.svg", import.meta.url).href;
 
 @customElement("my-app")
 export class MyApp extends LitElement {
@@ -54,7 +54,7 @@ export class MyApp extends LitElement {
   override render() {
     return html`
       <main>
-        <div class="logo"><img alt="open-wc logo" src="${logo}/" /></div>
+        <div class="logo"><img alt="open-wc logo" src="${logo}" /></div>
         <h1>${this.title}</h1>
 
         <p>Edit <code>src/my-app.ts</code> and save to live update.</p>
@@ -70,12 +70,7 @@ export class MyApp extends LitElement {
 
       <p class="app-footer">
         🚽 Made with love by
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://github.com/open-wc"
-          >open-wc</a
-        >.
+        <a target="_blank" rel="noopener noreferrer" href="https://github.com/open-wc">open-wc</a>.
       </p>
     `;
   }

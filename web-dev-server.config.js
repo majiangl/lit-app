@@ -12,6 +12,11 @@ export default /** @type {import('@web/dev-server').DevServerConfig} */ ({
   watch: false,
 
   /**
+   * Preserve symlinks when resolving imports
+   */
+  preserveSymlinks: true,
+
+  /**
    * The `--node-resolve` flag uses @rollup/plugin-node-resolve to resolve module imports.
    * See all options here: https://github.com/rollup/plugins/tree/master/packages/node-resolve#options
    */
