@@ -22,5 +22,7 @@ module.exports = {
   plugins: ["@typescript-eslint"],
   // ESLint ignores node_modules by default
   ignorePatterns: ["out/", "dist/"],
-  rules: {},
+  rules: {
+    '@typescript-eslint/consistent-type-imports': 'error'
+  },
 };
