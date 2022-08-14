@@ -1,6 +1,8 @@
 {
-  "include": ["src/**/*.ts"],
-  "exclude": [],
+  "include": [
+    "src/**/*.ts",
+    "tests/**/*.ts"
+  ],
   "compilerOptions": {
     "target": "es2019",
     "module": "es2020",
@@ -11,6 +13,9 @@
     "rootDir": "./",
     "outDir": "./out",
     "incremental": true,
+    "lib": [
+      "dom"
+    ],
     "experimentalDecorators": true,
     "importHelpers": true,
     "strict": true,
@@ -22,6 +27,6 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "allowSyntheticDefaultImports": true,
-    "forceConsistentCasingInFileNames": true
-  },
+    "forceConsistentCasingInFileNames": true,
+  }
 }
