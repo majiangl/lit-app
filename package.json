@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "build": "npm run compile && rimraf dist && rollup -c rollup.config.js",
-    "compile": "tsc && symlink-dir ./assets ./out/assets",
+    "compile": "rimraf out && tsc && symlink-dir ./assets ./out/assets",
     "git:precommit": "lint-staged",
     "prepare": "husky install",
     "start": "npm run compile && concurrently -k -r 'tsc --watch --preserveWatchOutput' 'wds'",
