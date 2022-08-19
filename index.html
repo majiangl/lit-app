@@ -23,7 +23,13 @@
 
   <body>
     <my-app></my-app>
-
+    <script>
+      window.process={
+        env: {
+          NODE_ENV: 'development'
+        }
+      }
+    </script>
     <script type="module" src="./out/src/my-app.js"></script>
   </body>
 </html>

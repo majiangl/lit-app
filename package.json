@@ -29,7 +29,8 @@
   },
   "homepage": "https://github.com/majiangl/lit-app#readme",
   "dependencies": {
-    "lit": "^2.2.8"
+    "lit": "^2.2.8",
+    "redux": "^4.2.0"
   },
   "devDependencies": {
     "@open-wc/dev-server-hmr": "^0.1.3",
