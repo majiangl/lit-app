@@ -9,7 +9,7 @@ export default /** @type {import('@web/dev-server').DevServerConfig} */ ({
   /**
    * Disable watch mode when hmr is enabled, as this always forces a page to reload on change
    */
-  watch: false,
+  watch: true,
 
   /**
    * Preserve symlinks when resolving imports
@@ -34,17 +34,18 @@ export default /** @type {import('@web/dev-server').DevServerConfig} */ ({
 
   plugins: [
     /**
-     * Use Hot Module Replacement. Requires @open-wc/dev-server-hmr plugin
+     * Use Hot Module Replacement.
+     * Issue: Source maps are dropped if HMR is enabled
      */
-    hmrPlugin({
-      /**
-       * Include JS files in out folder emitted by tsc, since it's designed to work with JS files.
-       */
-      include: ["out/**/*.js"],
-      /**
-       * Presets help by configuring the detection of base classes, decorators, and/or runtime code patches.
-       */
-      presets: [presets.lit],
-    }),
+    // hmrPlugin({
+    //   /**
+    //    * Include JS files in out folder emitted by tsc, since it's designed to work with JS files.
+    //    */
+    //   include: ["out/**/*.js"],
+    //   /**
+    //    * Presets help by configuring the detection of base classes, decorators, and/or runtime code patches.
+    //    */
+    //   presets: [presets.lit],
+    // }),
   ],
 });
