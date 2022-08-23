@@ -1,39 +1,53 @@
 import type { LitElement } from "lit";
-import { store } from "./internal";
 import type { Store } from "redux";
+import { storeProp } from "./internal";
 
 type Constructor<T> = new (...args: any[]) => T;
 
 export function StoreProvider<T extends Constructor<LitElement>>(superClass: T) {
-  abstract class StoreProviderMixin extends superClass {
-    abstract createStore(): Store;
+  class StoreProviderElement extends superClass {
+    createStore?: () => Store;
 
-    [store]?: Store;
+    [storeProp]?: Store;
 
     getStore() {
-      return this[store];
+      return this[storeProp];
+    }
+
+    protected shouldStoreUpdate(changedProperties: Map<PropertyKey, unknown>) {
+      return false;
     }
 
     override willUpdate(changedProperties: Map<PropertyKey, unknown>) {
-      if (this.shouldStoreUpdate(changedProperties)) {
-        this.updateStore();
+      if (!this.createStore) {
+        throw new Error("Function `createStore()` is not implemented. It is required to use `StoreProvider`.");
+      }
+      // First render
+      if (!this[storeProp]) {
+        this[storeProp] = this._createStore();
+      } else {
+        if (this.shouldStoreUpdate(changedProperties)) {
+          const prevStore = this[storeProp];
+          const nextStore = this._createStore();
+          this._updateStore(prevStore, nextStore);
+        }
       }
       super.willUpdate(changedProperties);
     }
 
-    shouldStoreUpdate(changedProperties: Map<PropertyKey, unknown>) {
-      return !this.getStore();
+    private _createStore() {
+      const store = this.createStore!();
+      if (!store) {
+        throw new Error(`Store shouldn't be empty. Function \`createStore()\` returned ${store}`);
+      }
+      return store;
     }
 
-    updateStore() {
-      const prevStore = this[store];
-      const nextStore = this.createStore();
-      this[store] = nextStore;
-      if (prevStore) {
-        //TODO: notify change
-      }
+    private _updateStore(prevStore: Store, nextStore: Store) {
+      this[storeProp] = nextStore;
+      // notify
     }
   }
 
-  return StoreProviderMixin;
+  return StoreProviderElement;
 }
