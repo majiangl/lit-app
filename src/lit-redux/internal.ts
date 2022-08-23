@@ -1,3 +1,3 @@
 export const storeProp = Symbol("storeProp");
 // export const connectedStore = Symbol("connectedStore");
-// export const CHANGE_STORE = Symbol("CHANGE_STORE");
+export const UPDATE_STORE = Symbol("UPDATE_STORE");

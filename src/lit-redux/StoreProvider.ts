@@ -1,14 +1,14 @@
 import type { LitElement } from "lit";
 import type { Store } from "redux";
-import { storeProp } from "./internal";
+import { storeProp, UPDATE_STORE } from "./internal";
 
 type Constructor<T> = new (...args: any[]) => T;
 
 export function StoreProvider<T extends Constructor<LitElement>>(superClass: T) {
   class StoreProviderElement extends superClass {
-    createStore?: () => Store;
+    protected createStore?: () => Store;
 
-    [storeProp]?: Store;
+    private [storeProp]?: Store;
 
     getStore() {
       return this[storeProp];
@@ -46,6 +46,11 @@ export function StoreProvider<T extends Constructor<LitElement>>(superClass: T) 
     private _updateStore(prevStore: Store, nextStore: Store) {
       this[storeProp] = nextStore;
       // notify
+      prevStore.replaceReducer((state, action) => action);
+      prevStore.dispatch({
+        type: UPDATE_STORE,
+        payload: nextStore,
+      });
     }
   }
 
