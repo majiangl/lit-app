@@ -1,3 +1,2 @@
-export const storeProp = Symbol("storeProp");
-// export const connectedStore = Symbol("connectedStore");
-export const UPDATE_STORE = Symbol("UPDATE_STORE");
+export const storeInstance = Symbol("storeInstance");
+// export const storeProvider = Symbol("storeProvider");

@@ -1,31 +1,24 @@
 import type { LitElement } from "lit";
 import type { PropertyValues } from "@lit/reactive-element";
 import type { Store } from "redux";
-import { storeProp, UPDATE_STORE } from "./internal";
+import { storeInstance } from "./internal";
 
 type Constructor<T> = new (...args: any[]) => T;
 
 export function StoreProvider<T extends Constructor<LitElement>>(superClass: T) {
   abstract class StoreProviderElement extends superClass {
     /**
-     * Current store instance. The unique Symbol `storeProp` helps identify current element as a `StoreProvider`.
+     * Current store instance. The unique Symbol `storeInstance` helps identify current element as a `StoreProvider`.
      * @private
      */
-    private [storeProp]?: Store;
+    private [storeInstance]?: Store;
 
     /**
-     * Returns current store instance.
-     */
-    getStore() {
-      return this[storeProp];
-    }
-
-    /**
-     * Indicates whether a new store instance should be provided. Invoked on `LitElement.willUpdate()`.
+     * Indicates whether a new store instance should be used. Invoked on `LitElement.willUpdate()`.
      * @param changedProperties   Map of changed properties with old values
      * @protected
      */
-    protected shouldStoreUpdate(changedProperties: PropertyValues) {
+    protected shouldStoreChange(changedProperties: PropertyValues) {
       return false;
     }
 
@@ -36,23 +29,37 @@ export function StoreProvider<T extends Constructor<LitElement>>(superClass: T) 
      */
     protected abstract createStore(): Store;
 
+    /**
+     * Callback function that needs to be overridden. It's called when a new store instance is provided.
+     * @param prevStore Previous store
+     * @param nextStore Next store
+     * @protected
+     */
+    protected onStoreChange(prevStore: Store, nextStore: Store) {
+      return;
+    }
+
     override willUpdate(changedProperties: PropertyValues) {
-      // First rendering
-      if (!this[storeProp]) {
-        this[storeProp] = this._createStore();
+      /* This branch is for initial rendering */
+      if (!this[storeInstance]) {
+        this[storeInstance] = this._createStore();
       } else {
-        // Subsequent updates
-        if (this.shouldStoreUpdate(changedProperties)) {
-          const prevStore = this[storeProp];
-          const nextStore = this._createStore();
-          // Notify all connected directives to listen to new store
-          prevStore.replaceReducer((state, action) => action);
-          prevStore.dispatch({
-            type: UPDATE_STORE,
-            payload: nextStore,
+        /* This branch is for update cycles */
+        if (this.shouldStoreChange(changedProperties)) {
+          const prevStore = this[storeInstance];
+          this[storeInstance] = this._createStore();
+
+          // Firstly, Notify element itself for store change
+          this.onStoreChange(prevStore, this[storeInstance]);
+
+          // Secondly, Trigger `storechange` event
+          const evt = new CustomEvent("storechange", {
+            bubbles: false,
           });
+          this.dispatchEvent(evt);
         }
       }
+
       super.willUpdate(changedProperties);
     }
 
